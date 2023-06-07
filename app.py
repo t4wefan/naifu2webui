@@ -104,7 +104,7 @@ def shutdown_event():
 async def generate(request: GenerationRequest):
 
     #文本预处理
-    request.prompt = request.prompt.replace("，",",").replace("（","(").replace("）",")").replace("：",":")
+    request.prompt = request.prompt.replace("，",",").replace("（","(").replace("）",")").replace("：",":") + ' <lora:onineko:0.8>,masterpiece,best quality,  <lora:add_detail:0.4>,<lora:crystalfruit:0.8>,'
 
 
     
