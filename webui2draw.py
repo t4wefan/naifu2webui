@@ -15,12 +15,12 @@ class webui_(object):
         self.api_web = "http://"+config["webui_api"]
         self.data = {
             # webui高清修复选项
-            "enable_hr": False,
+            "enable_hr": True,
             "restore_faces": False,
             "tiling": False,
             # text2img主要条件(按webui从上往下排列)
             "prompt": request.prompt,
-            "negative_prompt": "bad foot,three foot,(((3legs))),(((3arms))),(((bad legs))),(((bad hands))),(((extra legs))),oo long legs,thin,EasyNegative,bad anatomy,(negative_hand-neg))，messy hair,",
+            "negative_prompt": "easynegative,((negative_hand-neg)),bad legs,bad foot,three foot,(((3legs))),(((3arms))),(((bad legs))),(((bad hands))),(((extra legs))),oo long legs,thin,bad anatomy,messy hair,",
             "steps": request.steps,
             "sampler_index": "DPM++ 2M Karras",
             "width": request.width,
