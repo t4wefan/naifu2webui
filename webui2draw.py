@@ -15,7 +15,7 @@ class webui_(object):
         self.api_web = "http://"+config["webui_api"]
         self.data = {
             # webui高清修复选项
-            "enable_hr": True,
+            "enable_hr": False,
             "restore_faces": False,
             "tiling": False,
             # text2img主要条件(按webui从上往下排列)
