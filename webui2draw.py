@@ -19,8 +19,8 @@ class webui_(object):
             "restore_faces": False,
             "tiling": False,
             # text2img主要条件(按webui从上往下排列)
-            "prompt": request.prompt,
-            "negative_prompt": request.uc + "NSFW,(easynegative),(negative_hand-neg),bad legs,bad foot,three foot,(((3legs))),(((3arms))),(((bad legs))),(((bad hands))),(((extra legs))),oo long legs,thin,bad anatomy,3arms,close up",
+            "prompt": str(request.prompt) + " <lora:onineko:0.8>,masterpiece,best quality,  <lora:add_detail:0.6>,<lora:crystalfruit:0.6>,highly detailed,",
+            "negative_prompt": str(request.uc) + "NSFW,(easynegative),(negative_hand-neg),bad legs,bad foot,three foot,(((3legs))),(((3arms))),(((bad legs))),(((bad hands))),(((extra legs))),oo long legs,thin,bad anatomy,3arms,close up",
             "steps": request.steps,
             "sampler_index": "DPM++ 2M Karras",
             "width": request.width,
