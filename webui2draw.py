@@ -20,7 +20,7 @@ class webui_(object):
             "tiling": False,
             # text2img主要条件(按webui从上往下排列)
             "prompt": request.prompt,
-            "negative_prompt": "easynegative,((negative_hand-neg)),bad legs,bad foot,three foot,(((3legs))),(((3arms))),(((bad legs))),(((bad hands))),(((extra legs))),oo long legs,thin,bad anatomy,messy hair,",
+            "negative_prompt": request.uc + "NSFW,(easynegative),(negative_hand-neg),bad legs,bad foot,three foot,(((3legs))),(((3arms))),(((bad legs))),(((bad hands))),(((extra legs))),oo long legs,thin,bad anatomy,3arms,close up",
             "steps": request.steps,
             "sampler_index": "DPM++ 2M Karras",
             "width": request.width,
