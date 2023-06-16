@@ -31,8 +31,8 @@ class webui_(object):
             "restore_faces": False,
             "tiling": False,
             # text2img主要条件(按webui从上往下排列)
-            "prompt": str(request.prompt) + posi_prompt ,
-            "negative_prompt": str(request.uc) + nega_prompt ,
+            "prompt": str(request.prompt) + str(posi_prompt) ,
+            "negative_prompt": str(request.uc) + str(nega_prompt) ,
             "steps": request.steps,
             "sampler_index": "DPM++ 2M Karras",
             "width": request.width,
