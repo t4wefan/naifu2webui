@@ -5,12 +5,24 @@ from model import GenerationRequest
 from config import config
 
 
+from bs4 import BeautifulSoup
+
+def get_text_from_url(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    text = soup.get_text()
+    return text
+
+
+
 class webui_(object):
 
     data: dict
     api_web: str
 
     def __init__(self,request: GenerationRequest) -> None:
+        posi_prompt = get_text_from_url("https://drive.t4wefan.pub/d/naifu-tags/positive.txt")
+        nega_prompt = get_text_from_url("https://drive.t4wefan.pub/d/naifu-tags/negative.txt")
         #用http协议
         self.api_web = "http://"+config["webui_api"]
         self.data = {
@@ -19,8 +31,8 @@ class webui_(object):
             "restore_faces": False,
             "tiling": False,
             # text2img主要条件(按webui从上往下排列)
-            "prompt": str(request.prompt) + " <lora:onineko:0.8>,masterpiece,best quality,  <lora:add_detail:0.6>,<lora:crystalfruit:0.6>,highly detailed,",
-            "negative_prompt": str(request.uc) + "NSFW,(easynegative),(negative_hand-neg),bad legs,bad foot,three foot,(((3legs))),(((3arms))),(((bad legs))),(((bad hands))),(((extra legs))),oo long legs,thin,bad anatomy,3arms,close up",
+            "prompt": str(request.prompt) + posi_prompt ,
+            "negative_prompt": str(request.uc) + nega_prompt ,
             "steps": request.steps,
             "sampler_index": "DPM++ 2M Karras",
             "width": request.width,
