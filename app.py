@@ -7,6 +7,32 @@
 AI绘画前后端分离的尝试,本项目中使用naifu前端和webuiapi后端
 '''
 
+
+import time
+
+def delete_old_files():
+    # 获取output文件夹路径
+    folder_path = 'output'
+    # 获取当前时间戳
+    current_time = time.time()
+    # 设置时间阈值为一天
+    threshold = 24 * 60 * 60
+    
+    # 遍历output文件夹下的所有文件和子目录
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            # 获取文件路径
+            file_path = os.path.join(root, file)
+            # 获取文件的修改时间戳
+            modified_time = os.path.getmtime(file_path)
+            # 计算文件的生存时间
+            age = current_time - modified_time
+            # 如果文件的生存时间超过一天，则删除文件
+            if age > threshold:
+                os.remove(file_path)
+                print(f'Deleted old file: {file_path}')
+
+
 #解决fastapi输出乱码问题（天晓得loguru出了啥bug
 from colorama import init
 init(autoreset=True)
@@ -143,6 +169,8 @@ async def generate(request: GenerationRequest):
     logger.info(request)
     #绘图类初始化话
     MP = webui_(request)
+    #删除旧文件
+    delete_old_files()
     #画图获得返回数据
     data_img = MP.generate()
     #处理webui端数据
