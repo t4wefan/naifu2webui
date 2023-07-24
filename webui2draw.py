@@ -7,11 +7,16 @@ from config import config
 
 from bs4 import BeautifulSoup
 
+def remove_newlines(input_string):
+    # 使用replace方法将换行符替换为空字符串
+    new_string = input_string.replace("\n", "")
+    return new_string
+
 def get_text_from_url(url):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     html = soup.prettify()
-    return html
+    return remove_newlines(html)
 
 
 
