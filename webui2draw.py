@@ -39,7 +39,7 @@ class webui_(object):
             "prompt": str(request.prompt) + str(posi_prompt) ,
             "negative_prompt": str(request.uc) + str(nega_prompt) ,
             "steps": request.steps,
-            "sampler_index": "DPM++ SDE Karras",
+            "sampler_index": "Euler a",
             "width": request.width,
             "height": request.height,
             "cfg_scale": 7,
