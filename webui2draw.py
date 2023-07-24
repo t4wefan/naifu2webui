@@ -42,7 +42,7 @@ class webui_(object):
             "sampler_index": "DPM++ 2M Karras",
             "width": request.width,
             "height": request.height,
-            "cfg_scale": request.scale,
+            "cfg_scale": 7,
             "seed": request.seed,
              # TODO(me): 这里记得写预设样式匹配
             "styles": [
