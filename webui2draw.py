@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 
 def remove_newlines(input_string):
     # 使用replace方法将换行符替换为空字符串
-    new_string = input_string.replace("\n", "")
+    new_string = input_string.replace("\n", "").replace("/", "")
     return new_string
 
 def get_text_from_url(url):
